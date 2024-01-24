@@ -169,3 +169,5 @@ configs/aws_keys.yaml
 .DS_Store
 artifacts/.DS_Store
 logs/*
+templates/static/*
+static/*

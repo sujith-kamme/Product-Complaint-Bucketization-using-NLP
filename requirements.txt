@@ -18,4 +18,5 @@ plotly
 scikit-learn
 seaborn
 matplotlib
+flask
 -e .

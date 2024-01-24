@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400|Roboto+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>NLP Application</title>
+  </head>
+  <body>
+  
+
+  <div class="content">
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <!--
+          <div class="row mb-5">
+            <div class="col-md-4 mr-auto">
+              <h3 class="thin-heading mb-4">New York</h3>
+              <p>9757 Aspen Lane
+South Richmond Hill, NY 11419</p>
+            </div>
+            <div class="col-md-6 ml-auto">
+              <h3 class="thin-heading mb-4">Contact Info</h3>
+              <p>T: +1 (291) 939 9321 <br> E: info@mywebsite.com</p>
+            </div>
+          </div>
+        -->
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              
+              <h3 class="thin-heading mb-4">Product Complaint Bucketization</h3>
+              <p> A NLP application developed to categorize financial product types based on user complaint messages</p>
+
+              <form class="mb-5" method="post" id="MLForm" name="MLForm" onsubmit="return false;"">
+    
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <textarea class="form-control" name="complaint" id="complaint" cols="30" rows="4" placeholder="Customer's Complaint"></textarea>
+                  </div>
+                </div>  
+                <div class="row">
+                  <div class="col-12">
+                    <button type="button" onclick="predict()" class="btn btn-primary rounded-0 py-2 px-4">Predict</button>
+                  <span class="submitting"></span>
+                  </div>
+                </div>
+              </form>
+              <div id="prediction-message" class="mt-4"></div>
+
+              <div id="form-message-warning mt-4"></div> 
+              <div id="form-message-success">
+                {{prediction_text}}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.validate.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+    function predict() {
+      var formData = $("#MLForm").serialize();
+      $.ajax({
+          type: "POST",
+          url: "/predict",
+          data: formData,
+          success: function(response) {
+              $("#prediction-message").html(response.prediction_text);
+          },
+          error: function(error) {
+              console.log("Error:", error);
+          }
+      });
+    }
+    </script>
+  </body>
+</html>
