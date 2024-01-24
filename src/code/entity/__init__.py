@@ -18,7 +18,9 @@ class DataValidationConfig:
     ALL_DATASET_FILES: list
 
 @dataclass(frozen=True)
-class DataTransformationConfig:
+class DataTransformationModelEvalConfig:
     root_dir: Path
     data_path: Path
+    model_path: Path
+    metric_file_name: Path
 

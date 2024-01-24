@@ -13,12 +13,9 @@ data_validation:
   STATUS_FILE: artifacts/data_validation/status.txt
   ALL_DATASET_FILES: ["complaints_processed.csv"]
 
-data_transformation:
+data_transformation_and_model_evaluation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/dataset/data
-
-model_evaluation:
-  root_dir: artifacts/model_evaluation
-  data_path: artifacts/data_transformation/dataset
   model_path: artifacts/model/model.tf
   metric_file_name: artifacts/model_evaluation/metrics.csv
+

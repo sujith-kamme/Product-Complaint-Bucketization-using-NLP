@@ -1,4 +1,4 @@
-from src.code.entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
+from src.code.entity import DataIngestionConfig,DataValidationConfig,DataTransformationModelEvalConfig
 from src.code.constants import *
 from src.code.utils.common import read_yaml, create_directories
 
@@ -47,14 +47,16 @@ class ConfigurationManager:
         )
         return data_validation_config
     
-    def get_data_transformation_config(self) -> DataTransformationConfig:
-        config = self.config.data_transformation
+    def get_dt_me_config(self) -> DataTransformationModelEvalConfig:
+        config = self.config.data_transformation_and_model_evaluation
 
         create_directories([config.root_dir])
 
-        data_transformation_config = DataTransformationConfig(
+        data_transformation_config = DataTransformationModelEvalConfig(
             root_dir=config.root_dir,
-            data_path=config.data_path
+            data_path=config.data_path,
+            model_path=config.model_path,
+            metric_file_name=config.metric_file_name
         )
         return data_transformation_config
     

@@ -166,3 +166,6 @@ artifacts/.DS_Store
 .DS_Store
 artifacts/.DS_Store
 configs/aws_keys.yaml
+.DS_Store
+artifacts/.DS_Store
+logs/*
