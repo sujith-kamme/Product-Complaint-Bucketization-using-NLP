@@ -15,7 +15,7 @@ data_validation:
 
 data_transformation:
   root_dir: artifacts/data_transformation
-  data_path: artifacts/dataset/product_complaint
+  data_path: artifacts/dataset/data
 
 model_evaluation:
   root_dir: artifacts/model_evaluation
