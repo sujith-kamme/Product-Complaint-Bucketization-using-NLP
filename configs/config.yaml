@@ -1,0 +1,24 @@
+artifacts_root: artifacts
+
+dataset:
+  root_dir: artifacts/dataset
+  source_URL: s3://productcomplaint/product_complaint_dataset.zip
+  s3_bucket: productcomplaint
+  s3_dataset: product_complaint_dataset.zip
+  local_data_file: artifacts/dataset/dataset.zip
+  unzip_dir: artifacts/dataset//data
+
+data_validation:
+  root_dir: artifacts/data_validation
+  STATUS_FILE: artifacts/data_validation/status.txt
+  ALL_DATASET_FILES: ["complaints_processed.csv"]
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/dataset/product_complaint
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  data_path: artifacts/data_transformation/dataset
+  model_path: artifacts/model/model.tf
+  metric_file_name: artifacts/model_evaluation/metrics.csv
