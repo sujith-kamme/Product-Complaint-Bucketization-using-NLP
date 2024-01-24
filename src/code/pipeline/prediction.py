@@ -47,7 +47,7 @@ class PredictionPipeline:
         'debt_collection',
         'mortgages_and_loans',
         'retail_banking']
-        return max(pred), labels[np.argmax(pred)]
+        return pred, labels[np.argmax(pred)]
 
         
 
